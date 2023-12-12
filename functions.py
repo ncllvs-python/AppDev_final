@@ -256,66 +256,49 @@ def create_tab1_content(tab1):
     add_athletes_button = tk.Button(tab1_frame, text="Add Athletes", command=add_athletes)
     add_athletes_button.pack(pady=10)
 
-def create_tab2_content(tab2):
-    # Create a frame for the content of Tab 2
-    tab2_frame = ttk.Frame(tab2)
-    tab2_frame.pack(expand=True, fill="both")
 
-    # Initialize selected_data_var as a global variable
-    global selected_data_var
-    selected_data_var = tk.StringVar(tab2_frame)
-    selected_data_var.set("Select Data")  # Default selection
-
-    # Upload CSV Button
-    upload_button = tk.Button(tab2_frame, text="Upload CSV", command=upload_csv)
-    upload_button.pack(pady=10)
-
-    # File Type Menu
-    global file_type_menu
-    file_type_menu = tk.OptionMenu(tab2_frame, selected_data_var, "Select Data")
-    file_type_menu.pack(pady=10)
-
-    # Update Dropdown Menu
-    update_dropdown_menu()  # Initialize the dropdown menu
-
-    # Display Data Button
-    display_button = tk.Button(tab2_frame, text="Display Data",
-                               command=lambda tab=tab2_frame: display_selected_data(tab))
-    display_button.pack(pady=10)
-
-    # Include result_display in the View Data tab
-    global result_display
-    result_display = ttk.Treeview(tab2_frame)
-    result_display.pack(pady=10)
-
-
-def create_tab3_content(tab3):
-    # Create a frame for the content of Tab 3
-    tab3_frame = ttk.Frame(tab3)
-    tab3_frame.pack(expand=True, fill="both")
-
-    # Team Scores Button
-    team_scores_button = tk.Button(tab3_frame, text="Team Scores", command=lambda: display_results(data_dict[selected_data_var.get()], "Team_Scores"))
-    team_scores_button.pack(pady=10)
-
-    # Include result_display in the Team Scores tab
-    global result_display
-    result_display = ttk.Treeview(tab3_frame)
-    result_display.pack(pady=10)
 
 def create_tab4_content(tab4):
     # Create a frame for the content of Tab 4
     tab4_frame = ttk.Frame(tab4)
     tab4_frame.pack(expand=True, fill="both")
 
-    # Top 25 Finishers Button
-    top_25_button = tk.Button(tab4_frame, text="Top 25 Finishers", command=lambda: display_results(data_dict[selected_data_var.get()], "Top_25"))
-    top_25_button.pack(pady=10)
+    # Upload CSV Button
+    upload_button = tk.Button(tab4_frame, text="Upload CSV", command=upload_csv)
+    upload_button.pack(pady=10)
+
+    # Initialize selected_data_var as a global variable
+    global selected_data_var
+    selected_data_var = tk.StringVar(tab4_frame)
+    selected_data_var.set("Select Data")  # Default selection
+
+    # File Type Menu
+    global file_type_menu
+    file_type_menu = tk.OptionMenu(tab4_frame, selected_data_var, "Select Data")
+    file_type_menu.pack(pady=10)
+
+    # Update Dropdown Menu
+    update_dropdown_menu()  # Initialize the dropdown menu
+
+    # Display Data Button
+    display_button = tk.Button(tab4_frame, text="Display Data",
+                               command=lambda tab=tab4_frame: display_selected_data(tab))
+    display_button.pack(pady=10)
 
     # Include result_display in the Top 25 tab
     global result_display
     result_display = ttk.Treeview(tab4_frame)
     result_display.pack(pady=10)
+
+    # Top 25 Finishers Button
+    top_25_button = tk.Button(tab4_frame, text="Top 25 Finishers", command=lambda: display_results(data_dict[selected_data_var.get()], "Top_25"))
+    top_25_button.pack(pady=10)
+
+    # Team Scores Button
+    team_scores_button = tk.Button(tab4_frame, text="Team Scores",
+                                   command=lambda: display_results(data_dict[selected_data_var.get()], "Team_Scores"))
+    team_scores_button.pack(pady=10)
+
 
 def load_athletes_listbox(listbox):
     try:
