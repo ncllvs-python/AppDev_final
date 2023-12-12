@@ -5,8 +5,6 @@ import csv
 import sqlite3
 from tkinter import filedialog, messagebox, simpledialog
 
-result_display = None
-
 # Set display options for Pandas
 pd.set_option('display.max_columns', None)  # Display all columns
 pd.set_option('display.width', None)  # Display full width
@@ -18,7 +16,7 @@ selected_data_var = None
 file_type_menu = None
 
 def create_table():
-    connection = sqlite3.connect('../crosscountry_match.db')
+    connection = sqlite3.connect('crosscountry_match.db')
     cursor = connection.cursor()
     try:
         # Create the race_detail table if it doesn't exist
@@ -76,7 +74,7 @@ def add_teams():
                 teams_data = [row[" Team"] for row in csv_reader]
 
             # Connect to SQLite database
-            conn = sqlite3.connect("../crosscountry_match.db")
+            conn = sqlite3.connect("crosscountry_match.db")
             cursor = conn.cursor()
 
             # Create Teams table if not exists
@@ -101,7 +99,7 @@ def add_teams():
             messagebox.showerror("Error", f"An error occurred: {str(e)}")
 
 def add_race_details():
-    connection = sqlite3.connect('../crosscountry_match.db')
+    connection = sqlite3.connect('crosscountry_match.db')
     cursor = connection.cursor()
     try:
         # Fetch existing athlete IDs
@@ -139,7 +137,7 @@ def add_schools_and_races():
                 data = list(csv_reader)
 
             # Connect to SQLite database
-            conn = sqlite3.connect("../crosscountry_match.db")
+            conn = sqlite3.connect("crosscountry_match.db")
             cursor = conn.cursor()
 
             # Create Schools table if not exists
@@ -190,7 +188,7 @@ def add_athletes():
                 athletes_data = list(csv_reader)
 
             # Connect to SQLite database
-            conn = sqlite3.connect("../crosscountry_match.db")
+            conn = sqlite3.connect("crosscountry_match.db")
             cursor = conn.cursor()
 
             # Prompt user for gender
@@ -303,7 +301,7 @@ def create_tab4_content(tab4):
 def load_athletes_listbox(listbox):
     try:
         # Connect to SQLite database
-        conn = sqlite3.connect("../crosscountry_match.db")
+        conn = sqlite3.connect("crosscountry_match.db")
         cursor = conn.cursor()
 
         # Fetch athletes from the database

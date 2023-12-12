@@ -13,7 +13,7 @@ def main():
     root.title("Middle School State XC Calculator")
     root.geometry("800x600")
 
-    # Connect to your SQLite database (replace 'your_database.db' with your actual database file)
+    # Connect to your SQLite database
     with sqlite3.connect('crosscountry_match.db') as connection:
         cursor = connection.cursor()
 

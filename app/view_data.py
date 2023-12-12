@@ -8,7 +8,7 @@ from datetime import datetime
 def load_athletes_listbox(listbox):
     try:
         # Connect to SQLite database
-        conn = sqlite3.connect("../crosscountry_match.db")
+        conn = sqlite3.connect("crosscountry_match.db")
         cursor = conn.cursor()
 
         # Fetch athletes from the database
